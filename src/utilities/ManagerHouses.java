@@ -1,5 +1,6 @@
-package entities;
+package utilities;
 
+import entities.House;
 import utilities.WordsChecker;
 
 import java.util.ArrayList;
@@ -80,6 +81,23 @@ public class ManagerHouses{
         }
     }
 
+    public static void allocateHouse(){
+        Scanner sc = new Scanner(System.in);
 
+        listFreeHouses();
+
+        System.out.print("Indique o numero da casa que deseja alugar: ");
+        int houseNumber = sc.nextInt();
+
+        House selected = housesList.stream().filter(x -> x.getNumber() == houseNumber).findFirst().orElse(null);
+
+        if(selected == null){
+            System.out.println("Essa casa não existe.");
+        }else{
+            System.out.println("\nA casa foi alugada com sucesso, seja bem vindo!\n");
+            selected.setAllocationStatus(false);
+        }
+
+    }
 
 }

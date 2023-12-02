@@ -1,4 +1,4 @@
-import entities.ManagerHouses;
+import utilities.ManagerHouses;
 
 
 import java.util.Scanner;
@@ -38,6 +38,7 @@ public class MainMenu{
 
                 case 4:
                     System.out.println("\nAlugar uma casa:");
+                    ManagerHouses.allocateHouse();
                     break;
 
                 case 5:
