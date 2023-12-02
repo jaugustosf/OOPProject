@@ -5,7 +5,14 @@ public class House {
     private double price;
     private int number;
     private boolean paymentStatus;
+    private boolean allocationStatus;
 
+    public House(String address, double price, int number, boolean allocationStatus) {
+        this.address = address;
+        this.price = price;
+        this.number = number;
+        this.allocationStatus = allocationStatus;
+    }
 
     public String getAddress() {
         return address;
@@ -19,7 +26,7 @@ public class House {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -39,6 +46,12 @@ public class House {
         this.paymentStatus = paymentStatus;
     }
 
+    public boolean isAllocationStatus() {
+        return allocationStatus;
+    }
 
+    public void setAllocationStatus(boolean allocationStatus) {
+        this.allocationStatus = allocationStatus;
+    }
 
 }
