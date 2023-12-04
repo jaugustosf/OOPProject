@@ -92,7 +92,7 @@ public class ManagerHouses{
         House selected = housesList.stream().filter(x -> x.getNumber() == houseNumber).findFirst().orElse(null);
 
         if(selected == null){
-            System.out.println("Essa casa não existe.");
+            System.out.println("Essa casa não existe.\n");
         }else{
             System.out.println("\nA casa foi alugada com sucesso, seja bem vindo!\n");
             selected.setAllocationStatus(false);
@@ -100,4 +100,23 @@ public class ManagerHouses{
 
     }
 
+    public static void removeHouse(){
+        Scanner num = new Scanner(System.in);
+        int counter = 1;
+        listAll();
+
+        System.out.print("Digite o número da casa que deseja remover: ");
+        int numberRemover = num.nextInt();
+        for (House house: housesList){
+            if (house.getNumber() == numberRemover) {
+                if (house.isAllocationStatus()) {
+                    housesList.remove(house);
+                    System.out.println("Casas removida!");
+                    break;
+                } else {
+                    System.out.println("Esta casa está alugada por uma pessoa, não é possível remover do sistema agora.\n");
+                }
+            }
+        }
+    }
 }

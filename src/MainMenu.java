@@ -16,7 +16,7 @@ public class MainMenu{
 
         int option = 0;
 
-        while (option != 5) {
+        while (option != 6) {
             exibirMenu();
             option = sc.nextInt();
 
@@ -42,6 +42,11 @@ public class MainMenu{
                     break;
 
                 case 5:
+                    System.out.println("\nRemover casa: ");
+                    ManagerHouses.removeHouse();
+                    break;
+
+                case 6:
                     System.out.println("\nSaindo do programa!");
                     break;
 
@@ -58,7 +63,8 @@ public class MainMenu{
         System.out.println("2. Casas não alocadas");
         System.out.println("3. Cadastrar uma casa");
         System.out.println("4. Alugar uma casa");
-        System.out.println("5. Sair");
+        System.out.println("5. Remover uma casa");
+        System.out.println("6. Sair");
         System.out.print("Escolha uma opção: ");
     }
 }
