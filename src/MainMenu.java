@@ -9,10 +9,10 @@ public class MainMenu{
         Scanner sc = new Scanner(System.in);
 
         //Linhas abaixo apenas para declarar casas previamente.
-        ManagerHouses.preAdd("Raimundo", 12, 199, true);
-        ManagerHouses.preAdd("Inacio", 13, 188, false);
-        ManagerHouses.preAdd("Estevao", 14, 177, true);
-        ManagerHouses.preAdd("Teodorio", 17, 666, false);
+        ManagerHouses.preAdd("Leticia Alcântara","Raimundo Felipe", 12, 199, true);
+        ManagerHouses.preAdd("Nicolas Silva","Inacio Never", 13, 188, false);
+        ManagerHouses.preAdd("Victor Gomes","Estevao Ribeito", 14, 177, true);
+        ManagerHouses.preAdd("João Augusto","Teodorio Nascimento", 17, 666, false);
 
         int option = 0;
 

@@ -1,11 +1,11 @@
 package utilities;
 
 import entities.House;
-import utilities.WordsChecker;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static utilities.FileWriter.*;
 import static utilities.WordsChecker.*;
 
 public class ManagerHouses{
@@ -15,6 +15,9 @@ public class ManagerHouses{
         char controler = ' ';
 
         do {
+            System.out.println("Digite o nome do dono da casa: ");
+            String nameOwner = sc.nextLine();
+
             System.out.println("Digite o endereço da casa: ");
             String address = sc.nextLine();
 
@@ -35,7 +38,7 @@ public class ManagerHouses{
             String allocationStatus = sc.nextLine();
             boolean allocatedStatus = allocationStatus.equalsIgnoreCase("S");
 
-            House newHouse = new House(address, price, number, allocatedStatus);
+            House newHouse = new House(nameOwner, address, price, number, allocatedStatus);
             housesList.add(newHouse);
 
             System.out.println("Casa cadastrada com sucesso!\n\nSe desejar cadastrar uma nova casa, digite 'S' ou 'N'");
@@ -45,8 +48,8 @@ public class ManagerHouses{
         }while(controler == 'S');
     }
 
-    public static void preAdd(String address, double price, int number, boolean allocatedStatus){
-        House newHouse = new House(address, price, number, allocatedStatus);
+    public static void preAdd(String nameOwner,String address, double price, int number, boolean allocatedStatus){
+        House newHouse = new House(nameOwner ,address, price, number, allocatedStatus);
         housesList.add(newHouse);
     }
 
@@ -91,18 +94,26 @@ public class ManagerHouses{
 
         House selected = housesList.stream().filter(x -> x.getNumber() == houseNumber).findFirst().orElse(null);
 
+        sc.nextLine();
+        System.out.print("Digite o seu nome: ");
+        String nameClient = sc.nextLine();
+
+        System.out.print("Digite o endereço onde reside: ");
+        String addressClient = sc.nextLine();
+
         if(selected == null){
             System.out.println("Essa casa não existe.\n");
-        }else{
-            System.out.println("\nA casa foi alugada com sucesso, seja bem vindo!\n");
-            selected.setAllocationStatus(false);
+            return;
         }
 
+        sendContract(selected.getNameOwner(), selected.getAddress(), nameClient, addressClient, selected.getPrice());
+
+        System.out.println("\nA casa foi alugada com sucesso, seja bem vindo!\n");
+        selected.setAllocationStatus(false);
     }
 
     public static void removeHouse(){
         Scanner num = new Scanner(System.in);
-        int counter = 1;
         listAll();
 
         System.out.print("Digite o número da casa que deseja remover: ");
